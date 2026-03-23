@@ -119,12 +119,13 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 | NUM1 -eq NUM2 | NUM1 is numerically = NUM2          |
 | NUM1 -gt NUM2 | NUM1 is numerically > NUM2          |
 | NUM1 -lt NUM2 | NUM1 is numerically < NUM2          |
-| -d $FILE               | $FILE exists and is a directory.             |
+| Operator | Description |
 | -e $FILE               | $FILE exists.                                |
+| -d $FILE               | $FILE exists and is a directory.             |
 | -r $FILE               | $FILE exists and (read)                      |
-| -s $FILE               | $FILE exists and it's size >  0 (Not empty). |
 | -w $FILE               | $FILE exists and (write)                     |
 | -x $FILE               | $FILE exists and (execute)                   |
+| -s $FILE               | $FILE exists and it's size >  0 (Not empty). |
 
 
 
