@@ -2,6 +2,8 @@
 CLI  commands and patterns ideas
 
 
+
+
 #### SHELL_COMMENTS_IDEA_0001 ( Multiline shell script comments )
 ```bash
 # using (: ')
@@ -55,6 +57,9 @@ EOF
 |End of Unix time              | date -ud @2147483647       | Tue Jan 19 03:14:07 AM UTC 2038 |
 
 
+
+
+
 #### SHELL_COLORS_IDEA_0003 ( Show colors on terminal )
 ```bash
 show_colors(){
@@ -75,6 +80,10 @@ echo
 ```
 ![colors.png](images/colors.png)
 
+
+
+
+
 #### SHELL_ARGUMENTS_IDEA_0004 ( Use shift to consume positional parameters )
 ```bash
 NNAME=$1; shift
@@ -84,15 +93,26 @@ F1=$1; shift
 F2=$1
 ```
 
+
+
+
+
 #### SHELL_ARGUMENTS_IDEA_0005 ( ${!1} is Value of parameter name $1 )
 ```bash
 echo "Arg1_Name=$1 and Arg1_Value=${!1}" # Arg1_Name=HOME and Arg1_Value=/home/user1
 ```
 
+
+
+
+
 #### SHELL_FUNCTION_IDEA_0006 ( Single line function must end with ; } )
 ```bash
 function hello1() {  echo "Hello, World!"; } # (end with ; })
 ```
+
+
+
 
 
 #### SHELL_CODE_IDEA_0007 ( strings comparing )
@@ -107,6 +127,10 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
     if [$string1 \> $string2]: This checks if string1 is greater than string2
 ```
 
+
+
+
+
 #### SHELL_CODE_IDEA_0008 ( Run if variable contains a specific string )
 ```bash
 if [[ $T_OPTIONS == *"unMounting"* ]]
@@ -117,6 +141,10 @@ sudo umount -l  $MY_MP
 echoStatusI 'End   unMounting '
 fi
 ```
+
+
+
+
 
 
 #### SHELL_CODE_IDEA_0009 ( Run debend on the previous command status. )
@@ -142,6 +170,9 @@ fi
 
 
 
+
+
+
 #### SHELL_SUDO_IDEA_0010 ( Change system file content which need root privilege. )
 ```bash
 # Overwite
@@ -152,6 +183,10 @@ sudo sh -c "echo '1'     >             /proc/sys/net/ipv6/conf/all/disable_ipv6"
 sudo sh -c "echo 'log_3' >>            /tmp/log_file"            
             echo 'log_4' | sudo tee -a /tmp/log_fil
 ```
+
+
+
+
 
 #### SHELL_PYTHON_IDEA_0011 ( call Python script or Python function with arguments. )
 ```bash
