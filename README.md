@@ -99,7 +99,13 @@ F2=$1
 
 #### SHELL_VARIABLES_IDEA_0005 ( ${!1} is Value of variable name $1 )
 ```bash
+
+#BASH
 echo "VAR1_NAME=$1 and VAR1_VALUE=${!1}" # VAR1_NAME=HOME and VAR1_VALUE=/home/user1
+
+#SH
+# eval executes text as code:
+eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"  
 ```
 
 
