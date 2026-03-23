@@ -108,23 +108,23 @@ echo "VAR1_NAME=$1 and VAR1_VALUE=${!1}" # VAR1_NAME=HOME and VAR1_VALUE=/home/u
 eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"  
 ```
 
-#### SHELL_OPERATORS_IDEA_0006 ( Single line function must end with ; } )
+#### SHELL_OPERATORS_IDEA_0006 ( Strings and Numbers } )
 | Operator | Description |
 |-------------|---------|
 | ! EXPRESSION          | The EXPRESSION is false.                    |
-| -n STRING             | The length of STRING is > 0 (Not empty).    |
-| -z STRING             | The lengh of STRING is 0 (empty).           |
-| STRING1 = STRING2     | STRING1 is equal to STRING2                 |
-| STRING1 != STRING2    | STRING1 is not equal to STRING2             |
-| INTEGER1 -eq INTEGER2 | INTEGER1 is numerically = INTEGER2          |
-| INTEGER1 -gt INTEGER2 | INTEGER1 is numerically > INTEGER2          |
-| INTEGER1 -lt INTEGER2 | INTEGER1 is numerically < INTEGER2          |
-| -d FILE               | FILE exists and is a directory.             |
-| -e FILE               | FILE exists.                                |
-| -r FILE               | FILE exists and (read)                      |
-| -s FILE               | FILE exists and it's size >  0 (Not empty). |
-| -w FILE               | FILE exists and (write)                     |
-| -x FILE               | FILE exists and (execute)                   |
+| -n $STR1             | The length of $STR1 is > 0 (Not empty).    |
+| -z $STR1             | The lengh of $STR1 is 0 (empty).           |
+| $STR1 = $STR2     | $STR1 is equal to $STR2                 |
+| $STR1 != $STR2    | $STR1 is not equal to $STR2             |
+| NUM1 -eq NUM2 | NUM1 is numerically = NUM2          |
+| NUM1 -gt NUM2 | NUM1 is numerically > NUM2          |
+| NUM1 -lt NUM2 | NUM1 is numerically < NUM2          |
+| -d $FILE               | $FILE exists and is a directory.             |
+| -e $FILE               | $FILE exists.                                |
+| -r $FILE               | $FILE exists and (read)                      |
+| -s $FILE               | $FILE exists and it's size >  0 (Not empty). |
+| -w $FILE               | $FILE exists and (write)                     |
+| -x $FILE               | $FILE exists and (execute)                   |
 
 
 
