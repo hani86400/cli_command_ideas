@@ -108,7 +108,7 @@ echo "VAR1_NAME=$1 and VAR1_VALUE=${!1}" # VAR1_NAME=HOME and VAR1_VALUE=/home/u
 eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"  
 ```
 
-#### SHELL_OPERATORS_IDEA_0006 ( Strings and Numbers } )
+#### SHELL_OPERATORS_IDEA_0006 ( Strings and Numbers )
 | Operator | Description |
 |-------------|---------|
 | ! EXPRESSION          | The EXPRESSION is false.                    |
