@@ -121,6 +121,7 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 | NUM1 -lt NUM2 | NUM1 is numerically < NUM2          |
 
 | Operator | Description |
+|-------------|---------|
 | -e $FILE               | $FILE exists.                                |
 | -d $FILE               | $FILE exists and is a directory.             |
 | -r $FILE               | $FILE exists and (read)                      |
