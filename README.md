@@ -108,11 +108,27 @@ echo "VAR1_NAME=$1 and VAR1_VALUE=${!1}" # VAR1_NAME=HOME and VAR1_VALUE=/home/u
 eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"  
 ```
 
+#### SHELL_OPERATORS_IDEA_0006 ( Single line function must end with ; } )
+| Operator | Description |
+|-------------|---------|
+| ! EXPRESSION          | The EXPRESSION is false.                    |
+| -n STRING             | The length of STRING is > 0 (Not empty).    |
+| -z STRING             | The lengh of STRING is 0 (empty).           |
+| STRING1 = STRING2     | STRING1 is equal to STRING2                 |
+| STRING1 != STRING2    | STRING1 is not equal to STRING2             |
+| INTEGER1 -eq INTEGER2 | INTEGER1 is numerically = INTEGER2          |
+| INTEGER1 -gt INTEGER2 | INTEGER1 is numerically > INTEGER2          |
+| INTEGER1 -lt INTEGER2 | INTEGER1 is numerically < INTEGER2          |
+| -d FILE               | FILE exists and is a directory.             |
+| -e FILE               | FILE exists.                                |
+| -r FILE               | FILE exists and (read)                      |
+| -s FILE               | FILE exists and it's size >  0 (Not empty). |
+| -w FILE               | FILE exists and (write)                     |
+| -x FILE               | FILE exists and (execute)                   |
++-----------------------+---------------------------------------------+
 
 
-
-
-#### SHELL_FUNCTION_IDEA_0006 ( Single line function must end with ; } )
+#### SHELL_FUNCTION_IDEA_0007 ( Single line function must end with ; } )
 ```bash
 function hello1() {  echo "Hello, World!"; } # (end with ; })
 ```
@@ -121,7 +137,7 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
 
 
 
-#### SHELL_CODE_IDEA_0007 ( strings comparing )
+#### SHELL_CODE_IDEA_0008 ( strings comparing )
 
 ```bash
     if [$string1 = $string2]:  This checks if string1 is identical to string2
@@ -137,7 +153,7 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
 
 
 
-#### SHELL_CODE_IDEA_0008 ( Run if variable contains a specific string )
+#### SHELL_CODE_IDEA_0009 ( Run if variable contains a specific string )
 ```bash
 case "$T_OPTIONS" in
   *unMounting*)
@@ -147,7 +163,7 @@ case "$T_OPTIONS" in
 esac
 ```
 
-#### BASH_CODE_IDEA_0009 ( Run if variable contains a specific string )
+#### BASH_CODE_IDEA_0010 ( Run if variable contains a specific string )
 ```bash
 if [[ $T_OPTIONS == *"unMounting"* ]]
 then
@@ -163,7 +179,7 @@ fi
 
 
 
-#### SHELL_CODE_IDEA_0010 ( Run debend on the previous command status. )
+#### SHELL_CODE_IDEA_0011 ( Run debend on the previous command status. )
 ```bash
 echo "" # command
 
@@ -177,7 +193,7 @@ else
 ```
 
 
-#### SHELL_SUDO_IDEA_0011 ( Change system file content which need root privilege. )
+#### SHELL_SUDO_IDEA_0012 ( Change system file content which need root privilege. )
 ```bash
 # Overwite
 sudo sh -c "echo '1'     >             /proc/sys/net/ipv6/conf/all/disable_ipv6" # Enable IPv6 Temporarily	
@@ -192,7 +208,7 @@ sudo sh -c "echo 'log_3' >>            /tmp/log_file"
 
 
 
-#### SHELL_PYTHON_IDEA_0012 ( call Python script or Python function with arguments. )
+#### SHELL_PYTHON_IDEA_0013 ( call Python script or Python function with arguments. )
 ```bash
 python3 python_script.py 4 9
 13
