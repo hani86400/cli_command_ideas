@@ -97,9 +97,9 @@ F2=$1
 
 
 
-#### SHELL_ARGUMENTS_IDEA_0005 ( ${!1} is Value of parameter name $1 )
+#### SHELL_VARIABLES_IDEA_0005 ( ${!1} is Value of variable name $1 )
 ```bash
-echo "Arg1_Name=$1 and Arg1_Value=${!1}" # Arg1_Name=HOME and Arg1_Value=/home/user1
+echo "VAR1_NAME=$1 and VAR1_VALUE=${!1}" # VAR1_NAME=HOME and VAR1_VALUE=/home/user1
 ```
 
 
@@ -133,6 +133,16 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
 
 #### SHELL_CODE_IDEA_0008 ( Run if variable contains a specific string )
 ```bash
+case "$T_OPTIONS" in
+  *unMounting*)
+     echoStatusI 'begin unMounting '
+     sudo umount -l  $MY_MP
+     echoStatusI 'End   unMounting '    ;;
+esac
+```
+
+#### BASH_CODE_IDEA_0009 ( Run if variable contains a specific string )
+```bash
 if [[ $T_OPTIONS == *"unMounting"* ]]
 then
 echo
@@ -147,33 +157,21 @@ fi
 
 
 
-#### SHELL_CODE_IDEA_0009 ( Run debend on the previous command status. )
+#### SHELL_CODE_IDEA_0010 ( Run debend on the previous command status. )
 ```bash
 echo "" # command
 
 T_RESULT=$?
-if [ $T_RESULT -eq 0 ]
+if [ "$T_RESULT" -eq 0 ]
 then
   echo success
 else
   echo failed
-fi
 
-# ( O R )
-
-if [ $T_RESULT == 0 ]; then
-  echo success 2
-else
-  echo failed 2
-fi
 ```
 
 
-
-
-
-
-#### SHELL_SUDO_IDEA_0010 ( Change system file content which need root privilege. )
+#### SHELL_SUDO_IDEA_0011 ( Change system file content which need root privilege. )
 ```bash
 # Overwite
 sudo sh -c "echo '1'     >             /proc/sys/net/ipv6/conf/all/disable_ipv6" # Enable IPv6 Temporarily	
@@ -188,7 +186,7 @@ sudo sh -c "echo 'log_3' >>            /tmp/log_file"
 
 
 
-#### SHELL_PYTHON_IDEA_0011 ( call Python script or Python function with arguments. )
+#### SHELL_PYTHON_IDEA_0012 ( call Python script or Python function with arguments. )
 ```bash
 python3 python_script.py 4 9
 13
