@@ -1,5 +1,14 @@
 
 
+function func1(){
+if [ $# -lt 1 ]
+then
+echo -e "Usage:\n\e[1;97mfunction_name\e[0m \e[1;95m<argument1>\e[0m \e[1;92m[argument2]\e[0m \e[1;93m[argument3]\e[0m"
+return 1
+fi 
+
+}
+
 show_colors(){
 export CE0="\x1B[0m" CEB="\x1B[1m"
 export FG_03="\x1B[30m"  FG_R3="\x1B[31m"  FG_G3="\x1B[32m"  FG_Y3="\x1B[33m"  FG_B3="\x1B[34m"  FG_P3="\x1B[35m"  FG_C3="\x1B[36m"  FG_W3="\x1B[37m"
