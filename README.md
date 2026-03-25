@@ -314,7 +314,7 @@ if __name__ == "__main__":
 
 ## JSON and API
 
-#### BASH_JSON_BUILD_IDEA_0015 ( Show colors on terminal )
+#### BASH_JSON_BUILD_IDEA_0015 ( Build JSON variable )
 
 ```bash
 JSON_DATA=$(jq -n \
@@ -324,3 +324,9 @@ JSON_DATA=$(jq -n \
   --arg html "$EMAIL_HTML" \
   '{from:$from,to:$to,subject:$subject,html:$html}')
 ```
+
+#### BASH_JSON_FORMAT_IDEA_0016 ( Using jq to format JSON variable/file )
+```bash
+cat tools/unsplash_response.json | jq
+```
+
