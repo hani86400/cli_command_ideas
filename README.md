@@ -253,7 +253,7 @@ fi
 }
 
 ```
-
+![colors_usage.png](images/colors_usage.png)
 
 
 #### SHELL_VARIABLES_IDEA_0013 ( ${!1} is Value of variable name $1 )

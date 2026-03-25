@@ -42,9 +42,15 @@ function func1(){
 if [ $# -lt 1 ]
 then
 # Show usage 
+echo
 echo -e "Usage: function_name <argument1> [argument2] [argument3]"
+echo
+echo 'OR'
+echo
 # Show usage with color
 echo -e "Usage: \e[1;97mfunction_name\e[0m \e[1;95m<argument1>\e[0m \e[1;92m[argument2]\e[0m \e[1;93m[argument3]\e[0m"
+echo
+
 return 1
 fi 
 }
