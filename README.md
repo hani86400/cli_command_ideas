@@ -73,7 +73,32 @@ EOT
 
 ___
 
-#### SHELL_DATE_IDEA_0003 ( date command samples )
+## Terminal Colors
+
+#### SHELL_COLORS_IDEA_0003 ( Show colors on terminal )
+```bash
+show_colors(){
+export CE0="\x1B[0m" CEB="\x1B[1m"
+export FG_03="\x1B[30m"  FG_R3="\x1B[31m"  FG_G3="\x1B[32m"  FG_Y3="\x1B[33m"  FG_B3="\x1B[34m"  FG_P3="\x1B[35m"  FG_C3="\x1B[36m"  FG_W3="\x1B[37m"
+export FG_09="\x1B[90m"  FG_R9="\x1B[91m"  FG_G9="\x1B[92m"  FG_Y9="\x1B[93m"  FG_B9="\x1B[94m"  FG_P9="\x1B[95m"  FG_C9="\x1B[96m"  FG_W9="\x1B[97m"
+export BG_04="\x1B[40m"  BG_R4="\x1B[41m"  BG_G4="\x1B[42m"  BG_Y4="\x1B[43m"  BG_B4="\x1B[44m"  BG_P4="\x1B[45m"  BG_C4="\x1B[46m"  BG_W4="\x1B[47m"
+export BG_0H="\x1B[100m" BG_RH="\x1B[101m" BG_GH="\x1B[102m" BG_YH="\x1B[103m" BG_BH="\x1B[104m" BG_PH="\x1B[105m" BG_CH="\x1B[106m" BG_WH="\x1B[107m"
+echo
+echo -e "FGx3N ${FG_03}FG_03 ${FG_R3}FG_R3 ${FG_G3}FG_G3 ${FG_Y3}FG_Y3 ${FG_B3}FG_B3 ${FG_P3}FG_P3 ${FG_C3}FG_C3 ${FG_W3}FG_W3 ${CE0} \n"
+echo -e "FGx3B ${CEB}${FG_03}FG_03 ${FG_R3}FG_R3 ${FG_G3}FG_G3 ${FG_Y3}FG_Y3 ${FG_B3}FG_B3 ${FG_P3}FG_P3 ${FG_C3}FG_C3 ${FG_W3}FG_W3 ${CE0} \n"
+echo -e "FGx9N ${FG_09}FG_09 ${FG_R9}FG_R9 ${FG_G9}FG_G9 ${FG_Y9}FG_Y9 ${FG_B9}FG_B9 ${FG_P9}FG_P9 ${FG_C9}FG_C9 ${FG_W9}FG_W9 ${CE0} \n"
+echo -e "FGx9B ${CEB}${FG_09}FG_09 ${FG_R9}FG_R9 ${FG_G9}FG_G9 ${FG_Y9}FG_Y9 ${FG_B9}FG_B9 ${FG_P9}FG_P9 ${FG_C9}FG_C9 ${FG_W9}FG_W9 ${CE0} \n"
+echo -e "BGx4- ${BG_04}BG_04 ${BG_R4}BG_R4 ${BG_G4}BG_G4 ${BG_Y4}BG_Y4 ${BG_B4}BG_B4 ${BG_P4}BG_P4 ${BG_C4}BG_C4 ${BG_W4}BG_W4 ${CE0} \n"
+echo -e "BGxH- ${BG_0H}BG_0H ${BG_RH}BG_RH ${BG_GH}BG_GH ${BG_YH}BG_YH ${BG_BH}BG_BH ${BG_PH}BG_PH ${BG_CH}BG_CH ${BG_WH}BG_WH ${CE0} \n"
+echo
+}
+```
+![colors.png](images/colors.png)
+___
+
+
+
+#### SHELL_DATE_IDEA_0004 ( date command samples )
 | Description | Command | Output |
 |-------------|---------|--------|
 |YY-MM-DD_hh:mm:ss             | date +%F_%T                | 2026-03-23_06:23:41 |
@@ -102,25 +127,6 @@ ___
 
 
 
-#### SHELL_COLORS_IDEA_0004 ( Show colors on terminal )
-```bash
-show_colors(){
-export CE0="\x1B[0m" CEB="\x1B[1m"
-export FG_03="\x1B[30m"  FG_R3="\x1B[31m"  FG_G3="\x1B[32m"  FG_Y3="\x1B[33m"  FG_B3="\x1B[34m"  FG_P3="\x1B[35m"  FG_C3="\x1B[36m"  FG_W3="\x1B[37m"
-export FG_09="\x1B[90m"  FG_R9="\x1B[91m"  FG_G9="\x1B[92m"  FG_Y9="\x1B[93m"  FG_B9="\x1B[94m"  FG_P9="\x1B[95m"  FG_C9="\x1B[96m"  FG_W9="\x1B[97m"
-export BG_04="\x1B[40m"  BG_R4="\x1B[41m"  BG_G4="\x1B[42m"  BG_Y4="\x1B[43m"  BG_B4="\x1B[44m"  BG_P4="\x1B[45m"  BG_C4="\x1B[46m"  BG_W4="\x1B[47m"
-export BG_0H="\x1B[100m" BG_RH="\x1B[101m" BG_GH="\x1B[102m" BG_YH="\x1B[103m" BG_BH="\x1B[104m" BG_PH="\x1B[105m" BG_CH="\x1B[106m" BG_WH="\x1B[107m"
-echo
-echo -e "FGx3N ${FG_03}FG_03 ${FG_R3}FG_R3 ${FG_G3}FG_G3 ${FG_Y3}FG_Y3 ${FG_B3}FG_B3 ${FG_P3}FG_P3 ${FG_C3}FG_C3 ${FG_W3}FG_W3 ${CE0} \n"
-echo -e "FGx3B ${CEB}${FG_03}FG_03 ${FG_R3}FG_R3 ${FG_G3}FG_G3 ${FG_Y3}FG_Y3 ${FG_B3}FG_B3 ${FG_P3}FG_P3 ${FG_C3}FG_C3 ${FG_W3}FG_W3 ${CE0} \n"
-echo -e "FGx9N ${FG_09}FG_09 ${FG_R9}FG_R9 ${FG_G9}FG_G9 ${FG_Y9}FG_Y9 ${FG_B9}FG_B9 ${FG_P9}FG_P9 ${FG_C9}FG_C9 ${FG_W9}FG_W9 ${CE0} \n"
-echo -e "FGx9B ${CEB}${FG_09}FG_09 ${FG_R9}FG_R9 ${FG_G9}FG_G9 ${FG_Y9}FG_Y9 ${FG_B9}FG_B9 ${FG_P9}FG_P9 ${FG_C9}FG_C9 ${FG_W9}FG_W9 ${CE0} \n"
-echo -e "BGx4- ${BG_04}BG_04 ${BG_R4}BG_R4 ${BG_G4}BG_G4 ${BG_Y4}BG_Y4 ${BG_B4}BG_B4 ${BG_P4}BG_P4 ${BG_C4}BG_C4 ${BG_W4}BG_W4 ${CE0} \n"
-echo -e "BGxH- ${BG_0H}BG_0H ${BG_RH}BG_RH ${BG_GH}BG_GH ${BG_YH}BG_YH ${BG_BH}BG_BH ${BG_PH}BG_PH ${BG_CH}BG_CH ${BG_WH}BG_WH ${CE0} \n"
-echo
-}
-```
-![colors.png](images/colors.png)
 
 
 
