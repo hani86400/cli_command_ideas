@@ -43,6 +43,7 @@ TEXT_2
 TEXT_3
 EOT
 
+# Create a system file that needs root privileges
 sudo tee system_file_name > /dev/null << 'EOFILE'
 TEXT_1
 TEXT_2
@@ -238,7 +239,7 @@ else
 ```
 
 
-#### SHELL_SUDO_IDEA_0013 ( Change system file content which need root privilege. )
+#### SHELL_SUDO_IDEA_0013 ( Change the system file content that needs root privileges. )
 ```bash
 # Overwite
 sudo sh -c "echo '1'     >             /proc/sys/net/ipv6/conf/all/disable_ipv6" # Enable IPv6 Temporarily	
