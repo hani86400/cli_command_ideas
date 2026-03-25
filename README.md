@@ -315,7 +315,6 @@ if __name__ == "__main__":
 ## JSON and API
 
 #### BASH_JSON_BUILD_IDEA_0015 ( Build JSON variable )
-
 ```bash
 JSON_DATA=$(jq -n \
   --arg from "$EMAIL_FROM" \
@@ -325,8 +324,51 @@ JSON_DATA=$(jq -n \
   '{from:$from,to:$to,subject:$subject,html:$html}')
 ```
 
-#### BASH_JSON_FORMAT_IDEA_0016 ( Using jq to format JSON variable/file )
+#### BASH_JSON_FORMAT_IDEA_0016 ( Use jq to format JSON variable/file )
 ```bash
 cat tools/unsplash_response.json | jq
 ```
+
+#### BASH_JSON_EXTRACT_IDEA_0017 ( Use jq to extract variables )
+```bash
+JSON_FILE='tools/unsplash_response.json'
+ALT_DESCRIPTION=$(jq -r '.[0].alt_description' ${JSON_FILE})
+DOWNLOAD_URL=$(jq -r '.[0].links.download' ${JSON_FILE})
+
+# OR
+
+read -r ALT_DESCRIPTION DOWNLOAD_URL < <(  jq -r '.[0] | .alt_description, .links.download' ${JSON_FILE} )
+
+
+# Output as JSON
+jq '.[0] | {
+  alt_description,
+  download: .links.download
+}' ${JSON_FILE}
+```
+
+
+#### BASH_API_0016 ( Use curl to send API request and curl options save in an array)
+```bash
+CURL_OPT=(
+  -s
+  -X POST
+  -k 
+  --http1.1   
+  -u "${URLL_USER}:${URLL_PASSWORD}"  
+  "$EMAIL_API_URL"
+)
+
+CURL_HEADERS=(
+  -H "Authorization: Bearer ${EMAIL_API_KEY}"
+  -H "Content-Type: application/json"
+)
+
+CURL_DATA=(
+  -d "$JSON_DATA"
+)
+
+curl "${CURL_OPT[@]}" "${CURL_HEADERS[@]}" "${CURL_DATA[@]}"
+ ```
+
 
