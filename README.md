@@ -309,3 +309,18 @@ def main():
 if __name__ == "__main__":
     main()
 ```    
+
+
+
+## JSON and API
+
+#### BASH_JSON_BUILD_IDEA_0015 ( Show colors on terminal )
+
+```bash
+JSON_DATA=$(jq -n \
+  --arg from "$EMAIL_FROM" \
+  --arg to "$EMAIL_TO" \
+  --arg subject "${EMAIL_SUBJECT}" \
+  --arg html "$EMAIL_HTML" \
+  '{from:$from,to:$to,subject:$subject,html:$html}')
+```

@@ -1,9 +1,50 @@
+function send_email() {
+CURL_OPT=(
+  -s
+  -X POST
+  -k 
+  --http1.1   
+  -u "${URLL_USER}:${URLL_PASSWORD}"  
+  "$EMAIL_API_URL"
+)
 
+CURL_HEADERS=(
+  -H "Authorization: Bearer ${EMAIL_API_KEY}"
+  -H "Content-Type: application/json"
+)
+
+CURL_DATA=(
+  -d "$PAYLOAD"
+)
+
+
+ 
+ 
+EMAIL_FROM="$1"
+EMAIL_TO="$2"
+EMAIL_SUBJECT="$3"
+EMAIL_HTML="$4"
+
+PAYLOAD=$(jq -n \
+  --arg from "$EMAIL_FROM" \
+  --arg to "$EMAIL_TO" \
+  --arg subject "${EMAIL_SUBJECT}" \
+  --arg html "$EMAIL_HTML" \
+  '{from:$from,to:$to,subject:$subject,html:$html}')
+
+echo 'curl "${CURL_OPT[@]}" "${CURL_HEADERS[@]}" "${CURL_DATA[@]}"'
+set -x
+      curl "${CURL_OPT[@]}" "${CURL_HEADERS[@]}" "${CURL_DATA[@]}"
+set +x
+}
 
 function func1(){
 if [ $# -lt 1 ]
 then
-echo -e "Usage:\n\e[1;97mfunction_name\e[0m \e[1;95m<argument1>\e[0m \e[1;92m[argument2]\e[0m \e[1;93m[argument3]\e[0m"
+# Show usage 
+echo -e "Usage: function_name <argument1> [argument2] [argument3]"
+# Show usage with color
+echo -e "Usage: \e[1;97mfunction_name\e[0m \e[1;95m<argument1>\e[0m \e[1;92m[argument2]\e[0m \e[1;93m[argument3]\e[0m"
 return 1
 fi 
 
