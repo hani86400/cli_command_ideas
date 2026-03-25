@@ -282,7 +282,7 @@ sudo sh -c "echo 'log_3' >>            /tmp/log_file"
 
 
 
-
+## Integrate with Python 
 
 #### SHELL_PYTHON_IDEA_0014 ( call Python script or Python function with arguments. )
 ```bash
