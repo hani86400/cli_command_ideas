@@ -2,11 +2,6 @@
 CLI  commands and patterns ideas
 
 
-***
-
----
-
-___
 
 ## Multiple Lines
 #### SHELL_COMMENTS_IDEA_0001 ( multiline shell script comments )
