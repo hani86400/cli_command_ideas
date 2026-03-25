@@ -58,7 +58,7 @@ EOT
 )
 ```
 
-#### SHELL_SUDO_IDEA_0003 ( Change the system file content that needs root privileges. )
+#### SHELL_CONTENTS_IDEA_0003 ( Change the system file content that needs root privileges. )
 ```bash
 # Overwite
 sudo sh -c "echo '1'     >             /proc/sys/net/ipv6/conf/all/disable_ipv6" # Enable IPv6 Temporarily	
