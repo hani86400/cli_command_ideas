@@ -1,5 +1,4 @@
 # cli_command_ideas
-CLI  commands and patterns ideas
 
 
 
