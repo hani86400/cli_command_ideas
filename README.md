@@ -168,8 +168,11 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 
 
 ### User Data Table1
+
 **Table 2 — User Data**
+
 <p align="center"><strong>Table 3 — User Data</strong></p>
+
 | Operator | Description |
 |-------------|---------|
 | -e $FILE               | $FILE exists.                                |
@@ -178,6 +181,7 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 | -w $FILE               | $FILE exists and (write)                     |
 | -x $FILE               | $FILE exists and (execute)                   |
 | -s $FILE               | $FILE exists and it's size >  0 (Not empty). |
+
 
 <table>
   <caption><strong>Table 1 — User Data</strong></caption>
@@ -193,6 +197,7 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
     <td>Active</td>
   </tr>
 </table>
+
 
 | Name | Role | Status |
 |------|------|--------|
