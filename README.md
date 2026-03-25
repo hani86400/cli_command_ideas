@@ -134,6 +134,94 @@ ___
 |End of Unix time              | date -ud @2147483647       | Tue Jan 19 03:14:07 AM UTC 2038 |
 
 
+## Integrate with Python 
+
+#### SHELL_PYTHON_IDEA_0006 ( call Python script or Python function with arguments. )
+```bash
+python3 python_script.py 4 9
+13
+export NUM1=2 NUM2=5 ; python3 -c "import os,python_script; print(python_script.sum(os.environ['NUM1'],os.environ['NUM2']))"
+7
+```
+Where python_script.py is:
+```python
+# python_script.py
+
+import sys
+import os
+
+def sum(N1,N2):
+    return int(N1) + int(N2)
+
+def main():
+    if len(sys.argv) >= 3:
+        print(sum(sys.argv[1], sys.argv[2]))
+        return
+
+if __name__ == "__main__":
+    main()
+```    
+
+
+
+## JSON and API
+
+#### BASH_JSON_BUILD_IDEA_0007 ( Build JSON variable )
+```bash
+JSON_DATA=$(jq -n \
+  --arg from "$EMAIL_FROM" \
+  --arg to "$EMAIL_TO" \
+  --arg subject "${EMAIL_SUBJECT}" \
+  --arg html "$EMAIL_HTML" \
+  '{from:$from,to:$to,subject:$subject,html:$html}')
+```
+
+#### BASH_JSON_FORMAT_IDEA_0008 ( Use jq to format JSON variable/file )
+```bash
+cat tools/unsplash_response.json | jq
+```
+
+#### BASH_JSON_EXTRACT_IDEA_0009 ( Use jq to extract variables )
+```bash
+JSON_FILE='tools/unsplash_response.json'
+ALT_DESCRIPTION=$(jq -r '.[0].alt_description' ${JSON_FILE})
+DOWNLOAD_URL=$(jq -r '.[0].links.download' ${JSON_FILE})
+
+# OR
+
+read -r ALT_DESCRIPTION DOWNLOAD_URL < <(  jq -r '.[0] | .alt_description, .links.download' ${JSON_FILE} )
+
+
+# Output as JSON
+jq '.[0] | {
+  alt_description,
+  download: .links.download
+}' ${JSON_FILE}
+```
+
+
+#### BASH_API_IDEA_0010 ( Use curl to send API request and organize curl options in an array. )
+```bash
+CURL_OPT=(
+  -s
+  -X POST
+  -k 
+  --http1.1   
+  -u "${URLL_USER}:${URLL_PASSWORD}"  
+  "$EMAIL_API_URL"
+)
+
+CURL_HEADERS=(
+  -H "Authorization: Bearer ${EMAIL_API_KEY}"
+  -H "Content-Type: application/json"
+)
+
+CURL_DATA=(
+  -d "$JSON_DATA"
+)
+
+curl "${CURL_OPT[@]}" "${CURL_HEADERS[@]}" "${CURL_DATA[@]}"
+ ```
 
 
 
@@ -142,7 +230,7 @@ ___
 
 
 
-#### SHELL_ARGUMENTS_IDEA_0006 ( Use shift to consume positional parameters )
+#### SHELL_ARGUMENTS_IDEA_0011 ( Use shift to consume positional parameters )
 ```bash
 NNAME=$1; shift
 R1=$1; shift
@@ -155,7 +243,7 @@ F2=$1
 
 
 
-#### SHELL_VARIABLES_IDEA_0007 ( ${!1} is Value of variable name $1 )
+#### SHELL_VARIABLES_IDEA_0012 ( ${!1} is Value of variable name $1 )
 ```bash
 
 #BASH
@@ -166,7 +254,7 @@ echo "VAR1_NAME=$1 and VAR1_VALUE=${!1}" # VAR1_NAME=HOME and VAR1_VALUE=/home/u
 eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"  
 ```
 
-#### SHELL_OPERATORS_IDEA_0008 ( Strings and Numbers )
+#### SHELL_OPERATORS_IDEA_0013 ( Strings and Numbers )
 | Operator | Description |
 |-------------|---------|
 | ! EXPRESSION          | The EXPRESSION is false.                    |
@@ -219,7 +307,7 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 | Hani | Admin | Active |
 |      |      | Pending |
 
-#### SHELL_FUNCTION_IDEA_0009 ( Single line function must end with ; } )
+#### SHELL_FUNCTION_IDEA_0014 ( Single line function must end with ; } )
 ```bash
 function hello1() {  echo "Hello, World!"; } # (end with ; })
 ```
@@ -228,7 +316,7 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
 
 
 
-#### SHELL_CODE_IDEA_0010 ( strings comparing )
+#### SHELL_CODE_IDEA_0015 ( strings comparing )
 
 ```bash
     if [$string1 = $string2]:  This checks if string1 is identical to string2
@@ -244,7 +332,7 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
 
 
 
-#### SHELL_CODE_IDEA_0011 ( Run if variable contains a specific string )
+#### SHELL_CODE_IDEA_0016 ( Run if variable contains a specific string )
 ```bash
 case "$T_OPTIONS" in
   *unMounting*)
@@ -254,7 +342,7 @@ case "$T_OPTIONS" in
 esac
 ```
 
-#### BASH_CODE_IDEA_0012 ( Run if variable contains a specific string )
+#### BASH_CODE_IDEA_0017 ( Run if variable contains a specific string )
 ```bash
 if [[ $T_OPTIONS == *"unMounting"* ]]
 then
@@ -270,7 +358,7 @@ fi
 
 
 
-#### SHELL_CODE_IDEA_0013 ( Run debend on the previous command status. )
+#### SHELL_CODE_IDEA_0018 ( Run debend on the previous command status. )
 ```bash
 echo "" # command
 
@@ -284,93 +372,5 @@ else
 ```
 
 
-## Integrate with Python 
-
-#### SHELL_PYTHON_IDEA_0014 ( call Python script or Python function with arguments. )
-```bash
-python3 python_script.py 4 9
-13
-export NUM1=2 NUM2=5 ; python3 -c "import os,python_script; print(python_script.sum(os.environ['NUM1'],os.environ['NUM2']))"
-7
-```
-Where python_script.py is:
-```python
-# python_script.py
-
-import sys
-import os
-
-def sum(N1,N2):
-    return int(N1) + int(N2)
-
-def main():
-    if len(sys.argv) >= 3:
-        print(sum(sys.argv[1], sys.argv[2]))
-        return
-
-if __name__ == "__main__":
-    main()
-```    
-
-
-
-## JSON and API
-
-#### BASH_JSON_BUILD_IDEA_0015 ( Build JSON variable )
-```bash
-JSON_DATA=$(jq -n \
-  --arg from "$EMAIL_FROM" \
-  --arg to "$EMAIL_TO" \
-  --arg subject "${EMAIL_SUBJECT}" \
-  --arg html "$EMAIL_HTML" \
-  '{from:$from,to:$to,subject:$subject,html:$html}')
-```
-
-#### BASH_JSON_FORMAT_IDEA_0016 ( Use jq to format JSON variable/file )
-```bash
-cat tools/unsplash_response.json | jq
-```
-
-#### BASH_JSON_EXTRACT_IDEA_0017 ( Use jq to extract variables )
-```bash
-JSON_FILE='tools/unsplash_response.json'
-ALT_DESCRIPTION=$(jq -r '.[0].alt_description' ${JSON_FILE})
-DOWNLOAD_URL=$(jq -r '.[0].links.download' ${JSON_FILE})
-
-# OR
-
-read -r ALT_DESCRIPTION DOWNLOAD_URL < <(  jq -r '.[0] | .alt_description, .links.download' ${JSON_FILE} )
-
-
-# Output as JSON
-jq '.[0] | {
-  alt_description,
-  download: .links.download
-}' ${JSON_FILE}
-```
-
-
-#### BASH_API_IDEA_0018 ( Use curl to send API request and organize curl options in an array. )
-```bash
-CURL_OPT=(
-  -s
-  -X POST
-  -k 
-  --http1.1   
-  -u "${URLL_USER}:${URLL_PASSWORD}"  
-  "$EMAIL_API_URL"
-)
-
-CURL_HEADERS=(
-  -H "Authorization: Bearer ${EMAIL_API_KEY}"
-  -H "Content-Type: application/json"
-)
-
-CURL_DATA=(
-  -d "$JSON_DATA"
-)
-
-curl "${CURL_OPT[@]}" "${CURL_HEADERS[@]}" "${CURL_DATA[@]}"
- ```
 
 
