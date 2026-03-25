@@ -14,7 +14,7 @@ CURL_HEADERS=(
 )
 
 CURL_DATA=(
-  -d "$PAYLOAD"
+  -d "$JSON_DATA"
 )
 
 
@@ -25,7 +25,7 @@ EMAIL_TO="$2"
 EMAIL_SUBJECT="$3"
 EMAIL_HTML="$4"
 
-PAYLOAD=$(jq -n \
+JSON_DATA=$(jq -n \
   --arg from "$EMAIL_FROM" \
   --arg to "$EMAIL_TO" \
   --arg subject "${EMAIL_SUBJECT}" \
@@ -47,7 +47,6 @@ echo -e "Usage: function_name <argument1> [argument2] [argument3]"
 echo -e "Usage: \e[1;97mfunction_name\e[0m \e[1;95m<argument1>\e[0m \e[1;92m[argument2]\e[0m \e[1;93m[argument3]\e[0m"
 return 1
 fi 
-
 }
 
 show_colors(){

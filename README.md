@@ -227,7 +227,7 @@ curl "${CURL_OPT[@]}" "${CURL_HEADERS[@]}" "${CURL_DATA[@]}"
 
 
 
-
+## ARGUMENTS
 
 
 #### SHELL_ARGUMENTS_IDEA_0011 ( Use shift to consume positional parameters )
@@ -239,11 +239,24 @@ F1=$1; shift
 F2=$1
 ```
 
+#### SHELL_ARGUMENTS_IDEA_0012 ( Show usage messag when missing argument )
+```bash
+function func1(){
+if [ $# -lt 1 ]
+then
+# Show usage 
+echo -e "Usage: function_name <argument1> [argument2] [argument3]"
+# Show usage with color
+echo -e "Usage: \e[1;97mfunction_name\e[0m \e[1;95m<argument1>\e[0m \e[1;92m[argument2]\e[0m \e[1;93m[argument3]\e[0m"
+return 1
+fi 
+}
+
+```
 
 
 
-
-#### SHELL_VARIABLES_IDEA_0012 ( ${!1} is Value of variable name $1 )
+#### SHELL_VARIABLES_IDEA_0013 ( ${!1} is Value of variable name $1 )
 ```bash
 
 #BASH
@@ -254,7 +267,7 @@ echo "VAR1_NAME=$1 and VAR1_VALUE=${!1}" # VAR1_NAME=HOME and VAR1_VALUE=/home/u
 eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"  
 ```
 
-#### SHELL_OPERATORS_IDEA_0013 ( Strings and Numbers )
+#### SHELL_OPERATORS_IDEA_0014 ( Strings and Numbers )
 | Operator | Description |
 |-------------|---------|
 | ! EXPRESSION          | The EXPRESSION is false.                    |
@@ -307,7 +320,7 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 | Hani | Admin | Active |
 |      |      | Pending |
 
-#### SHELL_FUNCTION_IDEA_0014 ( Single line function must end with ; } )
+#### SHELL_FUNCTION_IDEA_0015 ( Single line function must end with ; } )
 ```bash
 function hello1() {  echo "Hello, World!"; } # (end with ; })
 ```
@@ -316,7 +329,7 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
 
 
 
-#### SHELL_CODE_IDEA_0015 ( strings comparing )
+#### SHELL_CODE_IDEA_0016 ( strings comparing )
 
 ```bash
     if [$string1 = $string2]:  This checks if string1 is identical to string2
@@ -332,7 +345,7 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
 
 
 
-#### SHELL_CODE_IDEA_0016 ( Run if variable contains a specific string )
+#### SHELL_CODE_IDEA_0017 ( Run if variable contains a specific string )
 ```bash
 case "$T_OPTIONS" in
   *unMounting*)
@@ -342,7 +355,7 @@ case "$T_OPTIONS" in
 esac
 ```
 
-#### BASH_CODE_IDEA_0017 ( Run if variable contains a specific string )
+#### BASH_CODE_IDEA_0018 ( Run if variable contains a specific string )
 ```bash
 if [[ $T_OPTIONS == *"unMounting"* ]]
 then
@@ -358,7 +371,7 @@ fi
 
 
 
-#### SHELL_CODE_IDEA_0018 ( Run debend on the previous command status. )
+#### SHELL_CODE_IDEA_0019 ( Run debend on the previous command status. )
 ```bash
 echo "" # command
 
