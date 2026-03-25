@@ -28,7 +28,7 @@ EOF
 ```
 
 
-#### SHELL_COMMENTS_IDEA_0002 ( multiline shell script contents )
+#### SHELL_CONTENTS_IDEA_0002 ( multiline shell script contents )
 ```bash
 
 cat <<EOT
