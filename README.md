@@ -43,13 +43,6 @@ TEXT_2
 TEXT_3
 EOT
 
-# Create a system file that needs root privileges
-sudo tee system_file_name > /dev/null << 'EOFILE'
-TEXT_1
-TEXT_2
-TEXT_3
-EOFILE
-
 # Assign multiline to variable
 HTML_MESSAGE=$(
 cat <<EOT
@@ -65,12 +58,34 @@ EOT
 )
 ```
 
+#### SHELL_SUDO_IDEA_0003 ( Change the system file content that needs root privileges. )
+```bash
+# Overwite
+sudo sh -c "echo '1'     >             /proc/sys/net/ipv6/conf/all/disable_ipv6" # Enable IPv6 Temporarily	
+            echo '0'     | sudo tee    /proc/sys/net/ipv6/conf/all/disable_ipv6  # Disable IPv6 Temporarily	
+
+# Append
+sudo sh -c "echo 'log_3' >>            /tmp/log_file"            
+            echo 'log_4' | sudo tee -a /tmp/log_fil
+
+
+# multiline
+sudo tee system_file_name > /dev/null << 'EOFILE'
+TEXT_1
+TEXT_2
+TEXT_3
+EOFILE
+
+
+
+```
+
 
 ___
 
 ## Terminal Colors
 
-#### SHELL_COLORS_IDEA_0003 ( Show colors on terminal )
+#### SHELL_COLORS_IDEA_0004 ( Show colors on terminal )
 ```bash
 show_colors(){
 export CE0="\x1B[0m" CEB="\x1B[1m"
@@ -93,7 +108,7 @@ ___
 
 
 
-#### SHELL_DATE_IDEA_0004 ( date command samples )
+#### SHELL_DATE_IDEA_0005 ( date command samples )
 | Description | Command | Output |
 |-------------|---------|--------|
 |YY-MM-DD_hh:mm:ss             | date +%F_%T                | 2026-03-23_06:23:41 |
@@ -127,7 +142,7 @@ ___
 
 
 
-#### SHELL_ARGUMENTS_IDEA_0005 ( Use shift to consume positional parameters )
+#### SHELL_ARGUMENTS_IDEA_0006 ( Use shift to consume positional parameters )
 ```bash
 NNAME=$1; shift
 R1=$1; shift
@@ -140,7 +155,7 @@ F2=$1
 
 
 
-#### SHELL_VARIABLES_IDEA_0006 ( ${!1} is Value of variable name $1 )
+#### SHELL_VARIABLES_IDEA_0007 ( ${!1} is Value of variable name $1 )
 ```bash
 
 #BASH
@@ -151,7 +166,7 @@ echo "VAR1_NAME=$1 and VAR1_VALUE=${!1}" # VAR1_NAME=HOME and VAR1_VALUE=/home/u
 eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"  
 ```
 
-#### SHELL_OPERATORS_IDEA_0007 ( Strings and Numbers )
+#### SHELL_OPERATORS_IDEA_0008 ( Strings and Numbers )
 | Operator | Description |
 |-------------|---------|
 | ! EXPRESSION          | The EXPRESSION is false.                    |
@@ -204,7 +219,7 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 | Hani | Admin | Active |
 |      |      | Pending |
 
-#### SHELL_FUNCTION_IDEA_0008 ( Single line function must end with ; } )
+#### SHELL_FUNCTION_IDEA_0009 ( Single line function must end with ; } )
 ```bash
 function hello1() {  echo "Hello, World!"; } # (end with ; })
 ```
@@ -213,7 +228,7 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
 
 
 
-#### SHELL_CODE_IDEA_0009 ( strings comparing )
+#### SHELL_CODE_IDEA_0010 ( strings comparing )
 
 ```bash
     if [$string1 = $string2]:  This checks if string1 is identical to string2
@@ -229,7 +244,7 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
 
 
 
-#### SHELL_CODE_IDEA_0010 ( Run if variable contains a specific string )
+#### SHELL_CODE_IDEA_0011 ( Run if variable contains a specific string )
 ```bash
 case "$T_OPTIONS" in
   *unMounting*)
@@ -239,7 +254,7 @@ case "$T_OPTIONS" in
 esac
 ```
 
-#### BASH_CODE_IDEA_0011 ( Run if variable contains a specific string )
+#### BASH_CODE_IDEA_0012 ( Run if variable contains a specific string )
 ```bash
 if [[ $T_OPTIONS == *"unMounting"* ]]
 then
@@ -255,7 +270,7 @@ fi
 
 
 
-#### SHELL_CODE_IDEA_0012 ( Run debend on the previous command status. )
+#### SHELL_CODE_IDEA_0013 ( Run debend on the previous command status. )
 ```bash
 echo "" # command
 
@@ -267,19 +282,6 @@ else
   echo failed
 
 ```
-
-
-#### SHELL_SUDO_IDEA_0013 ( Change the system file content that needs root privileges. )
-```bash
-# Overwite
-sudo sh -c "echo '1'     >             /proc/sys/net/ipv6/conf/all/disable_ipv6" # Enable IPv6 Temporarily	
-            echo '0'     | sudo tee    /proc/sys/net/ipv6/conf/all/disable_ipv6  # Disable IPv6 Temporarily	
-
-# Append
-sudo sh -c "echo 'log_3' >>            /tmp/log_file"            
-            echo 'log_4' | sudo tee -a /tmp/log_fil
-```
-
 
 
 ## Integrate with Python 
