@@ -184,7 +184,7 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 
 
 <table>
-  <caption><strong>Table 1 — User Data</strong></caption>
+  <caption><strong>Table 1 — User Data (HTML)</strong></caption>
 
   <tr>
     <th>Name</th>
