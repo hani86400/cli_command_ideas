@@ -165,6 +165,7 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 
 | Files |
 |-------|
+
 | Operator | Description |
 |-------------|---------|
 | -e $FILE               | $FILE exists.                                |
