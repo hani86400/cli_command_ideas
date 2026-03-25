@@ -8,7 +8,7 @@ CLI  commands and patterns ideas
 
 ___
 
-### multiple lines
+## Multiple Lines
 #### SHELL_COMMENTS_IDEA_0001 ( multiline shell script comments )
 ```bash
 # using (: ')
