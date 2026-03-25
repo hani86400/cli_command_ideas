@@ -166,6 +166,10 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 | Files |
 |-------|
 
+
+### User Data Table1
+**Table 2 — User Data**
+<p align="center"><strong>Table 3 — User Data</strong></p>
 | Operator | Description |
 |-------------|---------|
 | -e $FILE               | $FILE exists.                                |
@@ -175,7 +179,25 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 | -x $FILE               | $FILE exists and (execute)                   |
 | -s $FILE               | $FILE exists and it's size >  0 (Not empty). |
 
+<table>
+  <caption><strong>Table 1 — User Data</strong></caption>
 
+  <tr>
+    <th>Name</th>
+    <th colspan="2">Info</th>
+  </tr>
+
+  <tr>
+    <td>Hani</td>
+    <td>Admin</td>
+    <td>Active</td>
+  </tr>
+</table>
+
+| Name | Role | Status |
+|------|------|--------|
+| Hani | Admin | Active |
+|      |      | Pending |
 
 #### SHELL_FUNCTION_IDEA_0008 ( Single line function must end with ; } )
 ```bash
