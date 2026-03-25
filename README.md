@@ -8,8 +8,8 @@ CLI  commands and patterns ideas
 
 ___
 
-
-#### SHELL_COMMENTS_IDEA_0001 ( Multiline shell script comments )
+### multiple lines
+#### SHELL_COMMENTS_IDEA_0001 ( multiline shell script comments )
 ```bash
 # using (: ')
 : '
@@ -34,9 +34,46 @@ EOF
 ```
 
 
+#### SHELL_COMMENTS_IDEA_0002 ( multiline shell script contents )
+```bash
+
+cat <<EOT
+TEXT_1
+TEXT_2
+TEXT_3
+EOT
+
+cat > user_file_name <<EOT
+TEXT_1
+TEXT_2
+TEXT_3
+EOT
+
+sudo tee system_file_name > /dev/null << 'EOFILE'
+TEXT_1
+TEXT_2
+TEXT_3
+EOFILE
+
+# Assign multiline to variable
+HTML_MESSAGE=$(
+cat <<EOT
+<html>
+<body>
+<h1>${EMAIL_DATE}</h1>
+<pre>
+${LISTING}
+</pre>
+</body>
+</html>
+EOT
+)
+```
 
 
-#### SHELL_DATE_IDEA_0002 ( date command samples )
+___
+
+#### SHELL_DATE_IDEA_0003 ( date command samples )
 | Description | Command | Output |
 |-------------|---------|--------|
 |YY-MM-DD_hh:mm:ss             | date +%F_%T                | 2026-03-23_06:23:41 |
@@ -65,7 +102,7 @@ EOF
 
 
 
-#### SHELL_COLORS_IDEA_0003 ( Show colors on terminal )
+#### SHELL_COLORS_IDEA_0004 ( Show colors on terminal )
 ```bash
 show_colors(){
 export CE0="\x1B[0m" CEB="\x1B[1m"
@@ -89,7 +126,7 @@ echo
 
 
 
-#### SHELL_ARGUMENTS_IDEA_0004 ( Use shift to consume positional parameters )
+#### SHELL_ARGUMENTS_IDEA_0005 ( Use shift to consume positional parameters )
 ```bash
 NNAME=$1; shift
 R1=$1; shift
@@ -102,7 +139,7 @@ F2=$1
 
 
 
-#### SHELL_VARIABLES_IDEA_0005 ( ${!1} is Value of variable name $1 )
+#### SHELL_VARIABLES_IDEA_0006 ( ${!1} is Value of variable name $1 )
 ```bash
 
 #BASH
@@ -113,7 +150,7 @@ echo "VAR1_NAME=$1 and VAR1_VALUE=${!1}" # VAR1_NAME=HOME and VAR1_VALUE=/home/u
 eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"  
 ```
 
-#### SHELL_OPERATORS_IDEA_0006 ( Strings and Numbers )
+#### SHELL_OPERATORS_IDEA_0007 ( Strings and Numbers )
 | Operator | Description |
 |-------------|---------|
 | ! EXPRESSION          | The EXPRESSION is false.                    |
@@ -136,7 +173,7 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 
 
 
-#### SHELL_FUNCTION_IDEA_0007 ( Single line function must end with ; } )
+#### SHELL_FUNCTION_IDEA_0008 ( Single line function must end with ; } )
 ```bash
 function hello1() {  echo "Hello, World!"; } # (end with ; })
 ```
@@ -145,7 +182,7 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
 
 
 
-#### SHELL_CODE_IDEA_0008 ( strings comparing )
+#### SHELL_CODE_IDEA_0009 ( strings comparing )
 
 ```bash
     if [$string1 = $string2]:  This checks if string1 is identical to string2
@@ -161,7 +198,7 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
 
 
 
-#### SHELL_CODE_IDEA_0009 ( Run if variable contains a specific string )
+#### SHELL_CODE_IDEA_0010 ( Run if variable contains a specific string )
 ```bash
 case "$T_OPTIONS" in
   *unMounting*)
@@ -171,7 +208,7 @@ case "$T_OPTIONS" in
 esac
 ```
 
-#### BASH_CODE_IDEA_0010 ( Run if variable contains a specific string )
+#### BASH_CODE_IDEA_0011 ( Run if variable contains a specific string )
 ```bash
 if [[ $T_OPTIONS == *"unMounting"* ]]
 then
@@ -187,7 +224,7 @@ fi
 
 
 
-#### SHELL_CODE_IDEA_0011 ( Run debend on the previous command status. )
+#### SHELL_CODE_IDEA_0012 ( Run debend on the previous command status. )
 ```bash
 echo "" # command
 
@@ -201,7 +238,7 @@ else
 ```
 
 
-#### SHELL_SUDO_IDEA_0012 ( Change system file content which need root privilege. )
+#### SHELL_SUDO_IDEA_0013 ( Change system file content which need root privilege. )
 ```bash
 # Overwite
 sudo sh -c "echo '1'     >             /proc/sys/net/ipv6/conf/all/disable_ipv6" # Enable IPv6 Temporarily	
@@ -216,7 +253,7 @@ sudo sh -c "echo 'log_3' >>            /tmp/log_file"
 
 
 
-#### SHELL_PYTHON_IDEA_0013 ( call Python script or Python function with arguments. )
+#### SHELL_PYTHON_IDEA_0014 ( call Python script or Python function with arguments. )
 ```bash
 python3 python_script.py 4 9
 13
