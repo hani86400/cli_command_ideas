@@ -348,7 +348,7 @@ jq '.[0] | {
 ```
 
 
-#### BASH_API_0016 ( Use curl to send API request and curl options save in an array)
+#### BASH_API_0016 ( Use curl to send API request and organize curl options in an array. )
 ```bash
 CURL_OPT=(
   -s
