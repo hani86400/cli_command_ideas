@@ -267,6 +267,8 @@ echo "VAR1_NAME=$1 and VAR1_VALUE=${!1}" # VAR1_NAME=HOME and VAR1_VALUE=/home/u
 eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"  
 ```
 
+
+## Files and Folders
 #### SHELL_FILES_IDEA_0014 ( file operators and examples )
 | Operator | Description |
 |-------------|---------|
