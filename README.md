@@ -267,7 +267,56 @@ echo "VAR1_NAME=$1 and VAR1_VALUE=${!1}" # VAR1_NAME=HOME and VAR1_VALUE=/home/u
 eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"  
 ```
 
-#### SHELL_OPERATORS_IDEA_0014 ( Strings and Numbers )
+#### SHELL_FILES_IDEA_0014 ( file operators and examples )
+| Operator | Description |
+|-------------|---------|
+| -e $FILE               | $FILE exists.                                |
+| -d $FILE               | $FILE exists and is a directory.             |
+| -r $FILE               | $FILE exists and (read)                      |
+| -w $FILE               | $FILE exists and (write)                     |
+| -x $FILE               | $FILE exists and (execute)                   |
+| -s $FILE               | $FILE exists and it's size >  0 (Not empty). |
+
+```bash
+# Create structure folders
+WD='/tmp/work_dir'
+mkdir -pv ${WD}/{srv/app},etc/{ssl,caddy,nginx/conf.d}}
+
+
+TEMP_DIR=$(mktemp -d) # Create random folder
+TEMP_FILE=$(mktemp)   # Create random file 
+
+ls -ld $TEMP_DIR $TEMP_FILE
+ls -ld $TEMP_DIR $TEMP_FILE
+drwx------ 2 user user 4096 2026-03-26 14:20 /tmp/tmp.QlT4bUqCWl
+-rw------- 1 user user    0 2026-03-26 14:20 /tmp/tmp.WgMVHkZvDa
+
+
+TMP_FILE=$(mktemp /tmp/test_XXXXXX) # with prefix
+
+
+# Run command only if file not exist 
+#
+[[ ! -f $FILE_NAME ]] && echo "$FILE_NAME missing! :("  ||  echo "$FILE_NAME exist :)"
+
+
+```
+
+
+
+#### SHELL_OPERATORS_IDEA_0015 ( Strings and Numbers )
+
+
+
+
+
+
+
+
+
+
+
+
 | Operator | Description |
 |-------------|---------|
 | ! EXPRESSION          | The EXPRESSION is false.                    |
@@ -278,9 +327,6 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 | NUM1 -eq NUM2 | NUM1 is numerically = NUM2          |
 | NUM1 -gt NUM2 | NUM1 is numerically > NUM2          |
 | NUM1 -lt NUM2 | NUM1 is numerically < NUM2          |
-
-| Files |
-|-------|
 
 
 ### User Data Table1
@@ -320,7 +366,7 @@ eval "echo VAR1_NAME=\$1 and VAR1_VALUE=\$$1"
 | Hani | Admin | Active |
 |      |      | Pending |
 
-#### SHELL_FUNCTION_IDEA_0015 ( Single line function must end with ; } )
+#### SHELL_FUNCTION_IDEA_0016 ( Single line function must end with ; } )
 ```bash
 function hello1() {  echo "Hello, World!"; } # (end with ; })
 ```
@@ -329,7 +375,7 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
 
 
 
-#### SHELL_CODE_IDEA_0016 ( strings comparing )
+#### SHELL_CODE_IDEA_0017 ( strings comparing )
 
 ```bash
     if [$string1 = $string2]:  This checks if string1 is identical to string2
@@ -345,7 +391,7 @@ function hello1() {  echo "Hello, World!"; } # (end with ; })
 
 
 
-#### SHELL_CODE_IDEA_0017 ( Run if variable contains a specific string )
+#### SHELL_CODE_IDEA_0018 ( Run if variable contains a specific string )
 ```bash
 case "$T_OPTIONS" in
   *unMounting*)
@@ -355,7 +401,7 @@ case "$T_OPTIONS" in
 esac
 ```
 
-#### BASH_CODE_IDEA_0018 ( Run if variable contains a specific string )
+#### BASH_CODE_IDEA_0019 ( Run if variable contains a specific string )
 ```bash
 if [[ $T_OPTIONS == *"unMounting"* ]]
 then
@@ -371,7 +417,7 @@ fi
 
 
 
-#### SHELL_CODE_IDEA_0019 ( Run debend on the previous command status. )
+#### SHELL_CODE_IDEA_0020 ( Run debend on the previous command status. )
 ```bash
 echo "" # command
 
