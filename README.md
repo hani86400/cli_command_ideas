@@ -284,15 +284,12 @@ mkdir -pv ${WD}/{srv/app},etc/{ssl,caddy,nginx/conf.d}}
 
 
 TEMP_DIR=$(mktemp -d) # Create random folder
-TEMP_FILE=$(mktemp)   # Create random file 
-
-ls -ld $TEMP_DIR $TEMP_FILE
-ls -ld $TEMP_DIR $TEMP_FILE
-drwx------ 2 user user 4096 2026-03-26 14:20 /tmp/tmp.QlT4bUqCWl
--rw------- 1 user user    0 2026-03-26 14:20 /tmp/tmp.WgMVHkZvDa
-
-
-TMP_FILE=$(mktemp /tmp/test_XXXXXX) # with prefix
+TEMP_FILE1=$(mktemp)   # Create random file 
+TEMP_FILE2=$(mktemp /tmp/test_XXXXXX) # with prefix
+ls -ld $TEMP_DIR $TEMP_FILE1 $TEMP_FILE2
+drwx------ 2 user user 4096 2026-03-26 14:30 /tmp/tmp.nrrcVbS8yf
+-rw------- 1 user user    0 2026-03-26 14:30 /tmp/test_sm6LSt
+-rw------- 1 user user    0 2026-03-26 14:30 /tmp/tmp.THNgYvR5A4
 
 
 # Run command only if file not exist 
