@@ -1,0 +1,37 @@
+name: PAGES_ENABLE (API)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  actions: write
+
+jobs:
+  enable-pages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Enable Pages (API)
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          echo "## 🔹 Enabling Pages (API)" >> $GITHUB_STEP_SUMMARY
+
+          if gh api /repos/${GITHUB_REPOSITORY}/pages > /dev/null 2>&1
+          then
+            echo "Pages already enabled"
+            echo "- ⚠️ Pages already enabled" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "Enabling Pages..."
+            gh api -X POST /repos/${GITHUB_REPOSITORY}/pages -f build_type=workflow
+
+            echo "- ✅ Pages now enabled" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 🌐 Pages URL" >> $GITHUB_STEP_SUMMARY
+          echo "- https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/" >> $GITHUB_STEP_SUMMARY
