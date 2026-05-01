@@ -42,11 +42,11 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v5
 
-     - name: PAGES_LINK_INFO
-       id:   PAGES_LINK_INFO
-       run: |
-        set -euo pipefail
-        echo "## 🌐 Pages URL" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "- https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/" >> $GITHUB_STEP_SUMMARY     
+      - name: PAGES_LINK_INFO
+        id:   PAGES_LINK_INFO
+        run: |
+         set -euo pipefail
+         echo "## 🌐 Pages URL" >> $GITHUB_STEP_SUMMARY
+         echo "" >> $GITHUB_STEP_SUMMARY
+         echo "- https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/" >> $GITHUB_STEP_SUMMARY     
         
