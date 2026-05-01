@@ -33,15 +33,24 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
-
-      # 🔥 Enable Pages only if not already enabled
+      
       - name: Enable Pages (API)
         env:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          set -e
-          echo "Try Enabled Pages..."
-          gh api -X POST /repos/${GITHUB_REPOSITORY}/pages -f build_type=workflow && echo "Pages now enabled"|| echo "Pages already enabled"
+          set -euo pipefail
+          echo "## 🔹 Enable Pages (API)"  >> $GITHUB_STEP_SUMMARY
+          echo "Checking if Pages is enabled..."
+          if gh api /repos/${GITHUB_REPOSITORY}/pages > /dev/null 2>&1
+          then
+            echo "     Pages already enabled"
+            echo "- ⚠️ Pages already enabled"   >> $GITHUB_STEP_SUMMARY
+          else
+            echo "Enabling Pages..."
+            gh api -X POST /repos/${GITHUB_REPOSITORY}/pages -f build_type=workflow
+            echo "     Pages now enabled"
+            echo "- ✅ Pages now enabled"   >> $GITHUB_STEP_SUMMARY
+          fi
     
       - name: Setup Pages
         uses: actions/configure-pages@v5
