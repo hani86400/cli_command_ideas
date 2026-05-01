@@ -1,0 +1,100 @@
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+name:     WF_PAGES_ENABLE_DISABLE
+run-name: WF_PAGES_ENABLE_DISABLE BY ${{ github.actor }} FUNCTION ${{ inputs.FUNCTION }} 
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#
+on:
+ workflow_dispatch:
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#   _                                   
+#  (_)                        _         
+#   _  ____   ____   _   _  _| |_   ___ 
+#  | ||  _ \ |  _ \ | | | |(_   _) /___)
+#  | || | | || |_| || |_| |  | |_ |___ |
+#  |_||_| |_||  __/ |____/    \__)(___/ 
+#            |_|                        
+  inputs:
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+   PAGES_FUNCTION:
+    description: Select function
+    required: true
+    default: PAGES_ENABLE
+    type: choice
+    options:
+     - PAGES_ENABLE
+     - PAGES_DISABLE
+# END [inputs] ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#
+#
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#   _____     ____     _   _ 
+#  | ___ |   |  _ \   | | | |
+#  | ____|   | | | |   \ V / 
+#  |_____)   |_| |_|    \_/ Rounded  
+#                           
+env:
+  GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+  PAGES_FUNCTION:        ${{ github.event.inputs.FUNCTION       || 'PAGES_ENABLE' }}  
+# END [env] :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#
+#
+permissions:
+  contents: write
+  actions: write
+  pages: write
+jobs:
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ JOB_NO_1:
+  name: JOB_PAGES_ENABLE_DISABLE
+  runs-on: ubuntu-latest
+  steps:
+
+#######################################################################
+#   STEP:                                              [ 2026_05_01 ] #      
+  - name: PAGES_ENABLE
+#######################################################################
+    if: ${{ env.PAGES_FUNCTION == 'PAGES_ENABLE' }}   
+    id:   PAGES_ENABLE
+    run: |
+     set -euo pipefail
+     echo "## 🔹 Enable Pages (API)"  >> $GITHUB_STEP_SUMMARY
+     echo "Checking if Pages is enabled..."
+     if gh api /repos/${GITHUB_REPOSITORY}/pages > /dev/null 2>&1
+     then
+       echo "     Pages already enabled"
+       echo "- ⚠️ Pages already enabled"   >> $GITHUB_STEP_SUMMARY
+     else
+       echo "Enabling Pages..."
+       gh api -X POST /repos/${GITHUB_REPOSITORY}/pages -f build_type=workflow
+       echo "     Pages now enabled"
+       echo "- ✅ Pages now enabled"   >> $GITHUB_STEP_SUMMARY
+     fi
+#   STEP [END] ########################################################
+
+#######################################################################
+#   STEP:                                              [ 2026_05_01 ] #      
+  - name: PAGES_DISABLE
+#######################################################################
+    if: ${{ env.PAGES_FUNCTION == 'PAGES_DISABLE' }}   
+    id:   PAGES_DISABLE
+    run: |
+     set -euo pipefail
+     echo "## 🔹 Disabling Pages (API)" >> $GITHUB_STEP_SUMMARY
+     if gh api /repos/${GITHUB_REPOSITORY}/pages > /dev/null 2>&1
+     then
+       echo "Disabling Pages..."
+       gh api -X DELETE /repos/${GITHUB_REPOSITORY}/pages
+        echo "    Pages now disabled"
+       echo "- ✅ Pages now disabled" >> $GITHUB_STEP_SUMMARY
+     else
+       echo "     Pages already disabled"
+       echo "- ⚠️ Pages already disabled" >> $GITHUB_STEP_SUMMARY
+     fi     
+#   STEP [END] ########################################################
+
+
+# END [job] :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# END [jobs] ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+  
