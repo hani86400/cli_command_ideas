@@ -34,7 +34,7 @@ on:
 #                           
 env:
   GH_TOKEN: ${{ secrets.PAT_TOKEN }}
-  PAGES_FUNCTION:        ${{ github.event.inputs.FUNCTION       || 'PAGES_ENABLE' }}  
+  PAGES_FUNCTION:        ${{ github.event.inputs.PAGES_FUNCTION       || 'PAGES_ENABLE' }}  
 # END [env] :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #
 #
