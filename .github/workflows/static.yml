@@ -37,7 +37,7 @@ jobs:
       # 🔥 Enable Pages only if not already enabled
       - name: Enable Pages (API)
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           set -e
           if gh api /repos/${GITHUB_REPOSITORY}/pages > /dev/null 2>&1; then
