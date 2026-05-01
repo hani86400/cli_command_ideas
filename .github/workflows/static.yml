@@ -40,7 +40,8 @@ jobs:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           set -e
-          gh api -X POST /repos/${GITHUB_REPOSITORY}/pages -f build_type=workflow || echo "Pages already enabled"
+          echo "Try Enabled Pages..."
+          gh api -X POST /repos/${GITHUB_REPOSITORY}/pages -f build_type=workflow && echo "Pages now enabled"|| echo "Pages already enabled"
     
       - name: Setup Pages
         uses: actions/configure-pages@v5
