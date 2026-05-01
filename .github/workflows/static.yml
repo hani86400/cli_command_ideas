@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy static content to Pages with enable Pages (API)
 
 on:
   # Runs on pushes targeting the default branch
@@ -29,6 +29,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      # 🔥 Force enable Pages via API
+      - name: Enable Pages (API)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api -X POST /repos/${GITHUB_REPOSITORY}/pages -f build_type=workflow || echo "Pages may already be enabled"
+
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
