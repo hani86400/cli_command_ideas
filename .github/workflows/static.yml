@@ -14,6 +14,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write   # 👈 required for API call
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -29,15 +30,23 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      # 🔥 Force enable Pages via API
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 🔥 Enable Pages only if not already enabled
       - name: Enable Pages (API)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh api -X POST /repos/${GITHUB_REPOSITORY}/pages -f build_type=workflow || echo "Pages may already be enabled"
-
-      - name: Checkout
-        uses: actions/checkout@v4
+          set -e
+          if gh api /repos/${GITHUB_REPOSITORY}/pages > /dev/null 2>&1; then
+            echo "Pages already enabled"
+          else
+            echo "Enabling Pages..."
+            gh api -X POST /repos/${GITHUB_REPOSITORY}/pages -f build_type=workflow
+          fi
+    
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
