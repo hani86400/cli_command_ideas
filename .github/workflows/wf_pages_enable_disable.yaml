@@ -69,9 +69,6 @@ jobs:
        echo "     Pages now enabled"
        echo "- ✅ Pages now enabled"   >> $GITHUB_STEP_SUMMARY
      fi
-     echo "## 🌐 Pages URL" >> $GITHUB_STEP_SUMMARY
-     echo "" >> $GITHUB_STEP_SUMMARY
-     echo "- https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/" >> $GITHUB_STEP_SUMMARY     
 #   STEP [END] ########################################################
 
 #######################################################################
